@@ -1,0 +1,1 @@
+$redis = Redis::Namespace.new("asynclock_#{Rails.env}", redis: Redis.new)
