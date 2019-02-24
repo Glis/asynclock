@@ -10,5 +10,5 @@
     = javascript_pack_tag 'application'
     = csrf_meta_tags
     = csp_meta_tag
-  %body{data: {controller: rails_controller_name, controller_action: action_name}}
+  %body{ style: 'width: 100vw; margin: 0', data: {controller: rails_controller_name, controller_action: action_name}}
     = yield

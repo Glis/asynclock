@@ -1,4 +1,17 @@
-%h1 Home#index
-%code 
-  %pre
-    = pp @city_information
+%h1{style: 'text-align: center'} Asynclock
+- @places.each do |place_name, place_information|
+  .card{style: 'text-align: center; width: 50%; display: inline-block'}>
+    %h2= place_name.humanize
+    - if params[:debug].present?
+      %p
+        %strong Latitud/Longitud: 
+        = "#{place_information['latitude']}/#{place_information['longitude']}"
+      %p
+        %strong Zona Horaria:
+        = place_information['timezone_name']
+    %p
+      %strong Hora local:
+      = place_information['localtime_formatted']
+    %p
+      %strong Temperatura (ºF/ºC):
+      = "#{place_information['temperature_f']} ºF / #{place_information['temperature_c']} ºC"
