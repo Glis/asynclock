@@ -5,13 +5,13 @@
     - if params[:debug].present?
       %p
         %strong Latitud/Longitud: 
-        = "#{place_information['latitude']}/#{place_information['longitude']}"
+        = "#{place_information.latitude}/#{place_information.longitude}"
       %p
         %strong Zona Horaria:
-        = place_information['timezone_name']
+        = place_information.timezone
     %p
       %strong Hora local:
-      = place_information['localtime_formatted']
+      = place_information.localtime_formatted
     %p
       %strong Temperatura (ºF/ºC):
-      = "#{place_information['temperature_f']} ºF / #{place_information['temperature_c']} ºC"
+      = "#{place_information.temperature_f} ºF / #{place_information.temperature_c} ºC"
