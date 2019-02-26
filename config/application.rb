@@ -17,6 +17,6 @@ module Asynclock
     # the framework and any gems in your application.
 
     # Delete all keys from redis at finishing the app
-    END { $redis.flushall }
+    at_exit { Redis.current.flushdb }
   end
 end
