@@ -3,30 +3,30 @@ class Forecaster
 
   def self.forecast(name, coordinates)
     url = "#{API_BASE_URL}/#{coordinates}"
-    result = api_request(url) while result.nil?
+    result = api_request(name, url) while result.nil?
 
     PlaceInformation.new(name, parseJSON(result))
   end
 
-  def self.api_request(url)
+  def self.api_request(name, url)
     if Random.rand < 0.1
       raise 'How unfortunate! The API Request Failed'
     else
-      cached_request(url)
+      cached_request(name, url)
     end
-  rescue => exception
-    $redis.hset('api.errors', Time.now.to_s, exception)
-    puts 'EXCEPTION: se guardó en api.errors'
+  rescue RuntimeError => error
+    $redis.hset('api.errors', Time.now.to_s, error.inspect)
+    puts 'Error: se guardó en api.errors'
   end
 
-  def self.cached_request(url)
-    if($redis.exists('places_coordinates_mockup'))
+  def self.cached_request(name, url)
+    if $redis.exists("#{name}_mockup")
       puts 'CACHE HIT: Taking places_hash from cache'
-      result = $redis.get('places_coordinates_mockup')
+      result = $redis.get("#{name}_mockup")
     else
       puts 'API HIT: Getting places_hash from API'
       result = RestClient.get(url)
-      $redis.set('places_coordinates_mockup', result)
+      $redis.set("#{name}_mockup", result)
     end
     result
   end
