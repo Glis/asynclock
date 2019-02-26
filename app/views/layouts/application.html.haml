@@ -11,5 +11,6 @@
     = javascript_pack_tag 'application'
     = csrf_meta_tags
     = csp_meta_tag
-  %body{ style: 'width: 100vw; margin: 0', data: {controller: rails_controller_name, controller_action: action_name}}
-    = yield
+  %body.bg-light.text-dark{ data: {controller: rails_controller_name, controller_action: action_name} }
+    .app-wrapper.container.py-2.d-sm-flex.flex-column.justify-content-center
+      = yield

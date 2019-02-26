@@ -13,3 +13,11 @@
  */
 @import "bootstrap/scss/bootstrap";
 
+body {
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.app-wrapper {
+  height: 100%;
+}
