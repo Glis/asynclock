@@ -1,4 +1,4 @@
-class PlaceInformation
+class Location
   attr_accessor :name, :latitude, :longitude, :timezone, :unixtime, :temperature_f, :info_hash
 
   def initialize(name, api_result)
@@ -16,7 +16,7 @@ class PlaceInformation
   end
 
   def localtime_formatted
-    localtime.strftime('%I:%M %p')
+    localtime.strftime('%I:%M:%S %P')
   end
 
   def temperature_c
