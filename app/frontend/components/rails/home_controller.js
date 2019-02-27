@@ -8,12 +8,18 @@
 // </div>
 
 import { Controller } from "stimulus"
+import { initChannel, setUpdaterCallback } from "../../cable/channels/updater";
 
 export default class extends Controller {
   connect() {
     console.log('connect home');
 
-    this.initPolling();
+    initChannel();
+    setUpdaterCallback(() => {
+      console.log('print this when message is broadcasted');
+    });
+
+    // this.initPolling();
   }
 
   initPolling() {
