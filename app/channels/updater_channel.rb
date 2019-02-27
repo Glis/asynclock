@@ -11,6 +11,6 @@ class UpdaterChannel < ApplicationCable::Channel
   def self.send_data_update
     data = { message: 'Prueba desde el backend' }
 
-    ActionCable.server.broadcast 'chat', data: data
+    ActionCable.server.broadcast 'updater', data: data
   end
 end

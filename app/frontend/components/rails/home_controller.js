@@ -22,18 +22,18 @@ export default class extends Controller {
     // this.initPolling();
   }
 
-  initPolling() {
-    // Initial Request
-    this.requestCount = this.count(0);
+  // initPolling() {
+  //   // Initial Request
+  //   this.requestCount = this.count(0);
 
-    // Set clock process to poll for data every 10 secs
-    setInterval(() => {
-      this.requestCount = this.count(this.requestCount);
-    }, 10000);
-  }
+  //   // Set clock process to poll for data every 10 secs
+  //   setInterval(() => {
+  //     this.requestCount = this.count(this.requestCount);
+  //   }, 10000);
+  // }
 
-  count(counter){
-    console.log(`Updating view. Request #${counter}`);
-    return counter+1;
-  }
+  // count(counter){
+  //   console.log(`Updating view. Request #${counter}`);
+  //   return counter+1;
+  // }
 }

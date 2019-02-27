@@ -1,5 +1,5 @@
 class Forecaster
-  API_BASE_URL = "https://api.darksky.net/forecast/#{Rails.application.credentials.forecast_api_key}"
+  API_BASE_URL = "https://api.darksky.net/forecast/63ea13868359bc4c6e1117dcb3669f3b"
 
   def self.get_locations
     cities = JSON.parse($redis.get('place_coordinates'))

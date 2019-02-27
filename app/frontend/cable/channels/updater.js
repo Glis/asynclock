@@ -6,9 +6,13 @@ let updater;
 // Sending a message: "perform" method calls a respective Ruby method
 // defined in chat_channel.rb. That's your bridge between JS and Ruby!
 function initChannel() {
-  updater = createChannel("UpdaterChannel", {
-    received({ message: data }) {
-      if (callback) callback.call(null, data);
+  updater = createChannel({channel: "UpdaterChannel"}, {
+    connected: () => {
+      console.log('connected! to the updater');
+    },
+    received: (data) => {
+      console.log('print this when message is broadcasted');
+      // if (callback) callback.call(null, data);
     }
   });
 }
