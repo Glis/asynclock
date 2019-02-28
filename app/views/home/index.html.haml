@@ -1,32 +1,22 @@
 .row.align-items-center
-  - @locations.each do |location|
+  - @locations.each do |location_name, coords|
     .col-12.col-md-6.col-xl-4.mb-3
       .card.shadow.p-3>
         .row.align-items-baseline
           .col
             %h2.font-weight-bold
-              = location.name.humanize
+              = location_name
           .col
-            %h5.text-secondary.text-right
-              = location.localtime_formatted
+            %h5.text-secondary.text-right{ data: { target: "rails--home.#{location_name}Time" } }
+              = t('utils.loading')
         .row.mt-3
           .col
-            %h2
-              = location.temperature_f
-              %small.text-secondary ºF
+            %h2{ data: { target: "rails--home.#{location_name}TempF" } }
+              = t('utils.loading')
           .col
-            %h2.text-right
-              = location.temperature_c
-              %small.text-secondary ºC
-        - if params[:debug].present?
-          .row
-            .col
-              %p
-                %strong Latitud/Longitud:
-                = "#{location.latitude}/#{location.longitude}"
-                %br
-                %strong Zona Horaria:
-                = location.timezone
+            %h2.text-right{ data: { target: "rails--home.#{location_name}TempC" } }
+              = t('utils.loading')
 %h5.text-right
-  Asynclock
-  %small.text-secondary by Jorge Fuentes, 2019
+  = t('application.name')
+  %small.text-secondary
+    = t('application.copyright')

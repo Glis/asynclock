@@ -17,6 +17,9 @@ module Asynclock
     # the framework and any gems in your application.
 
     # Delete all keys from redis at finishing the app
-    at_exit { Redis.current.flushdb }
+    at_exit do
+      # Redis.current.flushdb
+      $redis.del 'place_coordinates', 'zurich_mockup', 'georgia_mockup', 'auckland_mockup', 'santiago_mockup', 'sydney_mockup', 'london_mockup'
+    end
   end
 end

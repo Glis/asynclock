@@ -11,29 +11,39 @@ import { Controller } from "stimulus"
 import { initChannel, setUpdaterCallback } from "../../cable/channels/updater";
 
 export default class extends Controller {
+
+  static targets = ['santiagoTime', 'santiagoTempF', 'santiagoTempC',
+                    'zurichTime', 'zurichTempF', 'zurichTempC',
+                    'aucklandTime', 'aucklandTempF', 'aucklandTempC',
+                    'sydneyTime', 'sydneyTempF', 'sydneyTempC',
+                    'londonTime', 'londonTempF', 'londonTempC',
+                    'georgiaTime', 'georgiaTempF', 'georgiaTempC'];
+
   connect() {
     console.log('connect home');
 
-    initChannel();
-    setUpdaterCallback(() => {
-      console.log('print this when message is broadcasted');
-    });
+    // Initializes and connects to the updater channel
+    initChannel("UpdaterChannel");
 
-    // this.initPolling();
+    // Sets the callback to execute then receiving the data
+    setUpdaterCallback((receivedDataArray) => {
+      console.log('Received update! Data to update:');
+      console.log(receivedDataArray);
+      console.log('Updating front components');
+
+      this._updatePlacesInfo(receivedDataArray);
+    });
   }
 
-  // initPolling() {
-  //   // Initial Request
-  //   this.requestCount = this.count(0);
+  _updatePlacesInfo(receivedDataArray){
+    receivedDataArray.forEach((placeObject) => {
+      let placeName = placeObject['name'];
+      let fahrenheitSuffix = "<small class='text-secondary'> ºF</small>";
+      let celsiusSuffix = "<small class='text-secondary'> ºC</small>";
 
-  //   // Set clock process to poll for data every 10 secs
-  //   setInterval(() => {
-  //     this.requestCount = this.count(this.requestCount);
-  //   }, 10000);
-  // }
-
-  // count(counter){
-  //   console.log(`Updating view. Request #${counter}`);
-  //   return counter+1;
-  // }
+      this[`${placeName}TimeTarget`].innerHTML = placeObject.localtime_formatted;
+      this[`${placeName}TempFTarget`].innerHTML = `${placeObject.temperature_f}${fahrenheitSuffix}`;
+      this[`${placeName}TempCTarget`].innerHTML = `${placeObject.temperature_c}${celsiusSuffix}`;
+    });
+  }
 }
