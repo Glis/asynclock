@@ -15,5 +15,11 @@ module Asynclock
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Delete all keys from redis at finishing the app
+    at_exit do
+      # Redis.current.flushdb
+      $redis.del 'place_coordinates', 'zurich_mockup', 'georgia_mockup', 'auckland_mockup', 'santiago_mockup', 'sydney_mockup', 'london_mockup'
+    end
   end
 end

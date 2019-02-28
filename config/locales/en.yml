@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  application:
+    name: "Asynclock"
+    copyright: "by Jorge Fuentes, 2019"
+    labels:
+      lat_long: "Latitud/Longitude"
+      timezone: "Timezone:"
+  utils:
+    loading: "Loading..."

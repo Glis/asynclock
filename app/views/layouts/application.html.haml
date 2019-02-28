@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ charset: 'utf-8' }/
+    %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/    
+    %title Asynclock
+    = action_cable_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+    = csrf_meta_tags
+    = csp_meta_tag
+  %body.bg-light.text-dark{ data: {controller: rails_controller_name, controller_action: action_name} }
+    .app-wrapper.container.py-2.d-sm-flex.flex-column.justify-content-center
+      = yield

@@ -1,0 +1,16 @@
+.col-12.col-md-6.col-xl-4.mb-3
+  .card.shadow.p-3>
+    .row.align-items-baseline
+      .col
+        %h2.font-weight-bold
+          = local_assigns[:location_name].humanize
+      .col
+        %h5.text-secondary.text-right{ data: { target: "rails--home.#{local_assigns[:location_name]}Time" } }
+          = t('utils.loading')
+    .row.mt-3
+      .col
+        %h2{ data: { target: "rails--home.#{local_assigns[:location_name]}TempF" } }
+          = t('utils.loading')
+      .col
+        %h2.text-right{ data: { target: "rails--home.#{local_assigns[:location_name]}TempC" } }
+          = t('utils.loading')

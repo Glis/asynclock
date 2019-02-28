@@ -1,0 +1,7 @@
+.row.align-items-center
+  - @locations.each do |location_name, coords|
+    = render partial: 'location_card', locals: { location_name: location_name }
+%h5.text-right
+  = t('application.name')
+  %small.text-secondary
+    = t('application.copyright')

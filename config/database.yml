@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: asynclock_production
-  username: asynclock
-  password: <%= ENV['ASYNCLOCK_DATABASE_PASSWORD'] %>
+  database: asynclock
+  url: <%= ENV['DATABASE_URL'] %> 
+  encoding: unicode
+  pool: 5

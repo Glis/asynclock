@@ -1,0 +1,9 @@
+es:
+  application:
+    name: "Asynclock"
+    copyright: "por Jorge Fuentes, 2019"
+    labels:
+      lat_long: "Latitud/Longitud"
+      timezone: "Zona Horaria:"
+  utils:
+    loading: "Cargando..."
