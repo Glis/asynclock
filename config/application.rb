@@ -19,7 +19,7 @@ module Asynclock
     # Delete all keys from redis at finishing the app
     at_exit do
       # Redis.current.flushdb
-      $redis.del 'place_coordinates', 'zurich_mockup', 'georgia_mockup', 'auckland_mockup', 'santiago_mockup', 'sydney_mockup', 'london_mockup'
+      $redis.del('place_coordinates', 'zurich_mockup', 'georgia_mockup', 'auckland_mockup', 'santiago_mockup', 'sydney_mockup', 'london_mockup') if $redis.present?
     end
   end
 end
