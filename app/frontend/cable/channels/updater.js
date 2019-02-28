@@ -1,11 +1,11 @@
 import createChannel from "../cable";
 
-let callback; // declaring a variable that will hold a function later
-let updater;
+let callback; // Declaring a variable that will hold a function later
+let updater; // Cable Consumer instance
 
-// Function that initializes a channel
-function initChannel(channelName) {
-  updater = createChannel(channelName, {
+// Function that initializes the channel
+function initUpdaterChannel() {
+  updater = createChannel("UpdaterChannel", {
     connected: () => {
       console.log('connected! to the updater');
     },
@@ -18,9 +18,9 @@ function initChannel(channelName) {
   });
 }
 
-// Received callvack: this callback will be invoked once we receive something over channel
+// Received callback: this callback will be invoked once we receive something over channel
 function setUpdaterCallback(fn) {
   callback = fn;
 }
 
-export { initChannel, setUpdaterCallback };
+export { initUpdaterChannel, setUpdaterCallback };

@@ -1,21 +1,6 @@
 .row.align-items-center
   - @locations.each do |location_name, coords|
-    .col-12.col-md-6.col-xl-4.mb-3
-      .card.shadow.p-3>
-        .row.align-items-baseline
-          .col
-            %h2.font-weight-bold
-              = location_name
-          .col
-            %h5.text-secondary.text-right{ data: { target: "rails--home.#{location_name}Time" } }
-              = t('utils.loading')
-        .row.mt-3
-          .col
-            %h2{ data: { target: "rails--home.#{location_name}TempF" } }
-              = t('utils.loading')
-          .col
-            %h2.text-right{ data: { target: "rails--home.#{location_name}TempC" } }
-              = t('utils.loading')
+    = render partial: 'location_card', locals: { location_name: location_name }
 %h5.text-right
   = t('application.name')
   %small.text-secondary

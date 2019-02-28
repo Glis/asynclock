@@ -10,7 +10,6 @@
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 
-console.log('Hello World from Webpacker')
-const application = Application.start()
-const context = require.context("components", true, /.js$/)
-application.load(definitionsFromContext(context))
+const application = Application.start();
+const context = require.context("components", true, /.js$/);
+application.load(definitionsFromContext(context));

@@ -11,6 +11,6 @@ class UpdaterChannel < ApplicationCable::Channel
   def self.send_data_update
     locations = Forecaster.get_locations
 
-    ActionCable.server.broadcast 'updater_channel', locationsData: locations
+    ActionCable.server.broadcast('updater_channel', locationsData: locations) if locations.present?
   end
 end
