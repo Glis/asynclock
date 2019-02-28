@@ -22,7 +22,8 @@ class Forecaster
     if Random.rand < 0.1
       raise 'How unfortunate! The API Request Failed'
     else
-      cached_request(name, url)
+      # cached_request(name, url)
+      api_request(url)
     end
   rescue RuntimeError => error
     $redis.hset('api.errors', Time.now.to_s, error.inspect)
