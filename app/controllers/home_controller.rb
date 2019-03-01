@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @locations = Forecaster.get_initial_coordinates
+    @operation = Location::Operation::GetCoordinates.(params)
   end
 end

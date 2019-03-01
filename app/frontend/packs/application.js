@@ -9,6 +9,7 @@
 
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
+import 'css/application';
 
 const application = Application.start();
 const context = require.context("components", true, /.js$/);

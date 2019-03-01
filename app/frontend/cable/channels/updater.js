@@ -1,16 +1,16 @@
 import createChannel from "../cable";
 
 let callback; // Declaring a variable that will hold a function later
-let updater; // Cable Consumer instance
+let updater; // Cable consumer instance
 
 // Function that initializes the channel
 function initUpdaterChannel() {
   updater = createChannel("UpdaterChannel", {
     connected: () => {
-      console.log('connected! to the updater');
+      console.log('--- Connected to the updater ---');
     },
     disconnected: function() {
-      console.log('disconnected! to the updater');
+      console.log('--- Disconnected from the updater ---');
     },
     received: ({ locationsData }) => {
       if (callback) callback.call(null, locationsData);

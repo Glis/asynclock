@@ -37,4 +37,6 @@ en:
       lat_long: "Latitud/Longitude"
       timezone: "Timezone:"
   utils:
-    loading: "Loading..."
+    waiting: "Waiting..."
+    redis_keys_error: "Error fetching coordinates from database"
+    redis_keys_subtext: "Please restart the app"

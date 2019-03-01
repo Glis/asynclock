@@ -13,6 +13,7 @@ export default class extends Controller {
                     'georgiaTime', 'georgiaTempF', 'georgiaTempC'];
 
   connect() {
+    console.log('connected to location viewer');
     // Initializes and connects to the updater channel
     initUpdaterChannel();
 
