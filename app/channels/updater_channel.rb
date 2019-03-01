@@ -9,7 +9,7 @@ class UpdaterChannel < ApplicationCable::Channel
 
   # Called by the rake task
   def self.send_data_update
-    @operation = Location::Operation::Forecast.call(nil,cached: ENV['API_REQUESTS'].blank?)
+    @operation = Location::Operation::Forecast.call(nil,cached: ENV['API_REQUESTS_ENABLED'].blank?)
     if @operation.success?
       ActionCable.server.broadcast('updater_channel', locationsData: @operation['places'])
     else
