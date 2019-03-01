@@ -7,10 +7,13 @@ class UpdaterChannel < ApplicationCable::Channel
     stop_all_streams
   end
 
-  # Called when message-form contents are received by the server
+  # Called by the rake task
   def self.send_data_update
-    locations = Forecaster.get_locations
-
-    ActionCable.server.broadcast('updater_channel', locationsData: locations) if locations.present?
+    @operation = Location::Operation::Forecast.call(nil,cached: ENV['API_REQUESTS'].blank?)
+    if @operation.success?
+      ActionCable.server.broadcast('updater_channel', locationsData: @operation['places'])
+    else
+      puts 'Error in the forecast operation'
+    end
   end
 end

@@ -6,4 +6,6 @@ es:
       lat_long: "Latitud/Longitud"
       timezone: "Zona Horaria:"
   utils:
-    loading: "Cargando..."
+    waiting: "Cargando..."
+    redis_keys_error: "Error obteniendo las coordenadas de la base de datos"
+    redis_keys_subtext: "Por favor reinicie la aplicación"

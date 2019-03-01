@@ -1,0 +1,15 @@
+//@import "app/**/*.scss"
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.app-wrapper {
+  height: 100%;
+}
+
+.loading-image{
+  width: 1.5rem;
+}

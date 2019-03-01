@@ -1,6 +1,16 @@
-.row.align-items-center
-  - @locations.each do |location_name, coords|
-    = render partial: 'location_card', locals: { location_name: location_name }
+- if @operation.success?
+  .row.align-items-center{ data: { controller: 'stimulus--location-viewer' } }
+    - @operation['locations'].each do |location_name, coords|
+      .col-12.col-md-6.col-xl-4.mb-3
+        = render partial: 'location_card', locals: { location_name: location_name }
+- else
+  .row
+    .col
+      %h2.text-center
+        = t('utils.redis_keys_error')
+        %br
+        %small.text-secondary
+          = t('utils.redis_keys_subtext')
 %h5.text-right
   = t('application.name')
   %small.text-secondary

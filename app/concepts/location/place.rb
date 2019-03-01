@@ -1,8 +1,8 @@
-class Location
+class Location::Place
   attr_accessor :name, :latitude, :longitude, :timezone, :unixtime, :localtime_formatted, :temperature_f, :temperature_c, :info_hash
 
-  def initialize(name, api_result)
-    self.name = name
+  def initialize(api_result)
+    self.name = api_result['name']
     self.latitude = api_result['latitude']
     self.longitude = api_result['longitude']
     self.timezone = api_result['timezone']
