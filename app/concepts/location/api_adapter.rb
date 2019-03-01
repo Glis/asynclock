@@ -1,5 +1,5 @@
 class Location::APIAdapter
-  API_BASE_URL = "https://api.darksky.net/forecast/#{Rails.application.credentials.forecast_api_key}"
+  API_BASE_URL = "https://api.darksky.net/forecast/#{ENV['FORECAST_API_KEY'] || Rails.application.credentials.forecast_api_key}"
 
   attr_accessor :cached
 
@@ -9,6 +9,7 @@ class Location::APIAdapter
 
   def forecast_location(name, coordinates)
     url = "#{API_BASE_URL}/#{coordinates}"
+    puts url
 
     result = try_request(name, url) while result.nil?
 
